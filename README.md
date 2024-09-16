@@ -5,7 +5,7 @@ Welcome to the edusphere Platform Repository!
 This repository contains the core of the edusphere platform, a cutting-edge MERN stack application designed to revolutionize online education. edusphere seamlessly integrates technology and education to create a vibrant learning community for both instructors and students.
 
 ## Project Link
-[edusphere Platform](https://edusphere-edtech-project.vercel.app/)
+[edusphere Platform](https://edu-sphere-mu.vercel.app/)
 
 ## Key Features
 
@@ -26,12 +26,12 @@ To get started with the edusphere platform, follow the instructions below:
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/edusphere-edtech.git
+    git clone https://github.com/yourusername/edusphere.git
     ```
 
 2. Navigate to the project directory:
     ```sh
-    cd edusphere-edtech
+    cd edusphere
     ```
 
 3. Install dependencies:
@@ -51,5 +51,3 @@ We welcome contributions to the edusphere platform. Please read our [contributin
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-Thank you for being a part of the edusphere community!

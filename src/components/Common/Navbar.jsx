@@ -11,6 +11,8 @@ import { categories } from "../../services/apis"
 import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/Auth/ProfileDropdown"
 
+
+
 function Navbar() {
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
@@ -21,21 +23,21 @@ function Navbar() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    ;(async () => {
       setLoading(true)
       try {
         const res = await apiConnector("GET", categories.CATEGORIES_API)
-        setSubLinks(res.data.allCategories || [])
-        console.log(res.data.allCategories)
+        setSubLinks(res.data.data)
+       console.log(res.data.data)
       } catch (error) {
         console.log("Could not fetch Categories.", error)
-        setSubLinks([])
       }
       setLoading(false)
-    }
-
-    fetchCategories()
+    })()
   }, [])
+
+ 
+  // console.log("sub links", subLinks)
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
@@ -72,11 +74,13 @@ function Navbar() {
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
-                        ) : subLinks && subLinks.length > 0 ? (
+                        ) : subLinks.length ? (
                           <>
                             {subLinks
-                              .filter((subLink) => subLink?.courses?.length >= 0)
-                              .map((subLink, i) => (
+                              ?.filter(
+                                (subLink) => subLink?.courses?.length >= 0
+                              )
+                              ?.map((subLink, i) => (
                                 <Link
                                   to={`/catalog/${subLink.name
                                     .split(" ")
@@ -85,6 +89,8 @@ function Navbar() {
                                   className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
                                   key={i}
                                 >
+                                
+                                
                                   <p className="text-center">{subLink.name}</p>
                                 </Link>
                               ))}
